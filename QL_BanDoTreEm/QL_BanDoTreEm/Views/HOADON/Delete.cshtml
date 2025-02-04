@@ -1,0 +1,48 @@
+﻿@model QL_BanDoTreEm.Models.HOADON
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutADMIN.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Bạn có muốn xóa không ?</h3>
+<div>
+    <h4>Hóa Đơn</h4>
+    <hr />
+    <div class="detail">
+        <table class="table">
+            <tr>
+                <th class="header-title">Ngày Lập</th>
+                <td>@Html.DisplayFor(model => model.NGAYLAP)</td>
+            </tr>
+            <tr>
+                <th class="header-title">ID Hóa đơn</th>
+                <td>@Html.DisplayFor(model => model.ID_NHANVIEN)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Tổng Tiền</th>
+                <td>@Html.DisplayFor(model => model.TONGTIEN)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Trạng Thái</th>    
+                <td>@Html.DisplayFor(model => model.TRANGTHAI)</td>
+            </tr>
+           
+
+
+        </table>
+    </div>
+    
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

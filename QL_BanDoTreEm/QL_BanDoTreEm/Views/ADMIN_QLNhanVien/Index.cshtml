@@ -1,0 +1,130 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.NHANVIEN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutADMIN.cshtml";
+}
+
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+<div class="header-wrapper">
+    <div class="header-title">
+        <span>Danh mục</span>
+        <h2>Quản lý Nhân Viên</h2>
+    </div>
+    <div class="user-info">
+        <form action="/ADMIN_QLSanPham/Index">
+            <div class="search-box">
+                <i class='bx bx-search icon'></i>
+                <input type="search" id="search" name="search" placeholder="Search..." />
+                <button type="submit" class="back">OK</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+
+@{
+    string iconClass = "";
+    if (ViewBag.IconClass == "bxs-up-arrow")
+    {
+        iconClass = "bxs-down-arrow";
+    }
+    else
+    {
+        iconClass = "bxs-up-arrow";
+    }
+}
+
+<div class="tabular-wrapper">
+    <h3 class="main-title">Danh sách nhân viên</h3>
+    <a href="/ADMIN_QLNhanVien/Create">
+        <i class='bx bx-add-to-queue icon'></i>
+    </a>
+    <div class="table-container">
+        <table>
+            <thead>
+            <th>
+                Tên Nhân Viên
+            </th>
+            <th>
+                Phái
+            </th>
+
+            <th>
+                Ngày Sinh
+            </th>
+            <th>
+                Địa Chỉ 
+            </th>
+            <th>
+                Gmail
+            </th>
+            <th>
+                Điện Thoại
+            </th>
+            <th>
+                Chức Vụ
+            </th>
+            <th>
+                Mật Khẩu
+            </th>
+            <th>
+                Action
+            </th>
+            </thead>
+            @{
+                var reversedModel = Model.Reverse().ToList();
+            }
+
+            @foreach (var item in reversedModel)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TENNHANVIEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PHAI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGAYSINH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DIACHI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EMAIL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DIENTHOAI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CHUCVU)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TAIKHOAN.MATKHAU)
+                    </td>
+
+                    <td>
+                        <a href="/ADMIN_QLNhanVien/Details/@item.ID_NHANVIEN">
+                            <i class='bx bx-detail icon'></i>
+                        </a>|
+                        <a href="/ADMIN_QLNhanVien/Edit/@item.ID_NHANVIEN">
+                            <i class='bx bx-edit-alt icon'></i>
+                        </a>|
+                        <a href="/ADMIN_QLNhanVien/Delete/@item.ID_NHANVIEN">
+                            <i class='bx bx-trash icon'></i>
+                        </a>
+                    </td>
+                </tr>
+
+            }
+
+
+        </table>
+    </div>
+</div>
+

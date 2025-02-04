@@ -1,0 +1,113 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.PHIEUDAT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutADMIN.cshtml";
+}
+
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+<div class="header-wrapper">
+    <div class="header-title">
+        <span>Danh mục</span>
+        <h2>Quản lý nhập hàng</h2>
+    </div>
+    <div class="user-info">
+        <form action="/ADMIN_QLSanPham/Index">
+            <div class="search-box">
+                <i class='bx bx-search icon'></i>
+                <input type="search" id="search" name="search" placeholder="Search..." />
+                <button type="submit" class="back">OK</button>
+            </div>
+        </form>
+      
+    </div>
+</div>
+
+
+
+@{
+    string iconClass = "";
+    if (ViewBag.IconClass == "bxs-up-arrow")
+    {
+        iconClass = "bxs-down-arrow";
+    }
+    else
+    {
+        iconClass = "bxs-up-arrow";
+    }
+}
+
+<div class="tabular-wrapper">
+    <h3 class="main-title">Danh mục phiếu đặt</h3>
+    <a href="/ADMIN_QLKhoHang/SanPhamCanNhap">
+        <i class='bx bx-add-to-queue icon'></i>
+    </a>
+    <div class="table-container">
+        <table>
+            <thead>
+            <th>
+                <a href="/ADMIN_QLSanPham/Index?SortColumn=ID_SANPHAM&IconClass=@iconClass&page=1" style="text-decoration: none;">ID</a>
+                @if (ViewBag.SortColumn == "ID_PHIEUDAT")
+                {
+                    <i class="bx @ViewBag.IconClass"></i>
+                }
+            </th>
+            <th>
+                <a href="/Admin_SanPham/Index?SortColumn=TENSP&IconClass=@iconClass&page=1" style="text-decoration: none;">Ngày lập</a>
+                @if (ViewBag.SortColumn == "NGAYDATHANG")
+                {
+                    <i class="bx @ViewBag.IconClass"></i>
+                }
+            </th>
+
+            <th>
+                <a href="/ADMIN_QLSanPham/Index?SortColumn=DONGIANHAP&IconClass=@iconClass&page=1" style="text-decoration: none;">Tổng Tiền</a>
+                @if (ViewBag.SortColumn == "TONGTIEN")
+                {
+                    <i class="bx @ViewBag.IconClass"></i>
+                }
+            </th>
+            <th>
+                Trạng Thái
+            </th>
+            <th>
+                Action
+            </th>
+            </thead>
+            @{
+                var reversedModel = Model.Reverse().ToList();
+            }
+
+            @foreach (var item in reversedModel)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_PHIEUDAT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGAYDATHANG)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TONGTIEN)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TRANGTHAI)
+                    </td>
+
+                    <td>
+                        <a href="/ADMIN_QLNhapHang/Details/@item.ID_PHIEUDAT">
+                            <i class='bx bx-detail icon'></i>
+                        </a>
+                       
+                    </td>
+                </tr>
+
+            }
+
+
+        </table>
+    </div>
+</div>
+
+

@@ -1,0 +1,46 @@
+﻿@model QL_BanDoTreEm.Models.NHACUNGCAP
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutADMIN.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <div class="detail">
+        <table class="table">
+            <tr>
+                <th class="header-title">ID</th>
+                <td>@Html.DisplayFor(model => model.ID_NHACUNGCAP)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Tên nhà cung cấp</th>
+                <td>@Html.DisplayFor(model => model.TENNHACUNGCAP)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Nơi cung cấp</th>
+                <td>@Html.DisplayFor(model => model.NOICUNGCAP)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Điện thoại</th>
+                <td>@Html.DisplayFor(model => model.DIENTHOAI)</td>
+            </tr>
+
+
+        </table>
+    </div>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions ">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

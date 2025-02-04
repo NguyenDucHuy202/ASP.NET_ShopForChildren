@@ -1,0 +1,7 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.DANHMUCSANPHAM>
+    @foreach (var item in Model)
+    {
+        <li >
+            <a href="@Url.Action("cardSANPHAM", "SANPHAM", new { ID_DANHMUCSP = item.ID_DANHMUCSP })" class="text-green nav-link" style=" text-decoration: none; font-weight: bold;">@item.TENDANHMUCSP</a>
+        </li>
+    }

@@ -1,0 +1,85 @@
+.customer-info {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 50px;
+    margin-left: 200px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="tel"] {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  form input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  .cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+  }
+  
+  .cart-total-title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .cart-total-price {
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+    }
+
+  .payment {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+  .cart-items {
+    margin-top: 200px;
+    margin-left: 190px;
+    width: 70%;
+    }
+
+  .cart-quantity {
+    width: 35%;
+    }
+
+  .cart-item-title {
+  color: #333;
+  margin-left: 2.5em;
+  font-size: 1.2em;
+  }
+    
+  .cart-item-image {
+  width: 75px;
+  height: 90px;
+  }

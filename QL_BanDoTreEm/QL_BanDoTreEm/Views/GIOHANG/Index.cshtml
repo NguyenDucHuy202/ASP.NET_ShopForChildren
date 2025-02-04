@@ -1,0 +1,64 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.CHITIET_GIOHANG>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<link href="~/Content/styles/StyleSheet1.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+<section class="" style="margin-top:100px; background-color:aliceblue">
+    <div class="container py-5" id="danhSachChiTiet">
+        @Html.Partial("ChiTietGioHang")
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function xoaHangHoa(input) {
+        var maHD = (input.id.split("-")[0]);
+        var maHH = (input.id.split("-")[1]);
+       
+            $.ajax({
+            url: '@Url.Action("XoaChiTietHoaDon", "GIOHANG")',
+            type: 'GET',
+            data: { maHD: maHD, maHH:maHH },
+            success: function (data) {
+                $('#danhSachChiTiet').html(data);
+            },
+            error: function (ex) {
+                alert('Error occurred: ' + ex.responseText);
+            }
+        });
+    }
+
+    function chinhSoLuong(element, change) {
+        var input = element.parentNode.querySelector('input[type=number]');
+
+        var newValue = parseInt(input.value) + change;
+        if (newValue >= 1) {
+            input.value = newValue;
+            updateQuantity(input);
+        }
+    }
+
+    function updateQuantity(input) {
+        var soLuong = input.value;
+        var maHD = (input.id.split("-")[0]);
+        var maHH =(input.id.split("-")[1]);
+
+         $.ajax({
+            url: '@Url.Action("CapNhatSoLuong", "GIOHANG")',
+            type: 'GET',
+            data: { maHD: maHD, maHH: maHH, soLuong: soLuong },
+             success: function (data) {
+                 $('#danhSachChiTiet').html(data);
+            },
+            error: function (ex) {
+                alert('Error occurred: ' + ex.responseText);
+            }
+        });
+    }
+</script>
+

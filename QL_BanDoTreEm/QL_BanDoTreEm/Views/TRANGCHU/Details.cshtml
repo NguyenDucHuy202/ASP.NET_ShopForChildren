@@ -1,0 +1,128 @@
+﻿@model QL_BanDoTreEm.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<script src="~/Content/detailjs/script.js"></script>
+<link href="~/Content/detailjs/style.css" rel="stylesheet" />
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Product Card/Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+</head>
+<body>
+
+    <div class="card-wrapper" style="margin-top:230px;">
+        <div class="card">
+            <!-- card left -->
+            <div class="product-imgs">
+                <div class="img-display">
+                    <div class="img-showcase">
+                        <img src="@Url.Content("~/Content/images/ProductImages/" + Model.HINHANH + ".jpg")" alt="image">
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- card right -->
+            <div class="product-content">
+                <h2 class="product-title">@Html.DisplayFor(t => t.TENSANPHAM)</h2>
+                <a href="#" class="product-link">Nhà cung cấp: <span>@Html.DisplayFor(t => t.THUONGHIEU.TENTHUONGHIEU)</span> </a>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>4.7(21)</span>
+                </div>
+
+
+
+                <div class="product-detail">
+                    <h2>Thông tin sản phẩm: </h2>
+                    <p>@Html.DisplayFor(t => t.LUUY)</p>
+
+                    <ul>
+                        <li>Độ tuổi phù hợp: <span>@Html.DisplayFor(t => t.DOTUOIPHUHOP)</span></li>
+                        <li>Loại: <span>@Html.DisplayFor(t => t.LOAISANPHAM.TENLOAISP)</span></li>
+                        <li>Hạn sử dụng: <span>@Html.DisplayFor(t => t.HANSUDUNG)</span></li>
+                        <li>Thời gian sản xuất: <span>@Html.DisplayFor(t => t.NGAYSANXUAT)</span></li>
+                        <li>Shipping Area: <span>@Html.DisplayFor(t => t.CHATLIEU)</span></li>
+                        <li>Phí giao hàng: <span>Miễn Phí</span></li>
+                    </ul>
+                </div>
+                <div class="product-price">
+
+                    <p style="font-size:40px" class="new-price">Giá Bán: <span>@Html.DisplayFor(t => t.DONGIABAN).00đ</span></p>
+                </div>
+                <div class="purchase-info">
+
+                    <button type="button" class="btn">
+                        <i class="fas fa-shopping-cart"><a style="color:white" onclick="themVaoGioHang('@Model.ID_SANPHAM')">Thêm vào giỏ hàng</a></i>
+                    </button>
+
+                </div>
+
+                <div class="social-links">
+                    <p>Share At: </p>
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-pinterest"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
+<script>
+    function themVaoGioHang(input) {
+        var masp = input;
+
+            $.ajax({
+            url: '@Url.Action("InsertShoppingCard", "GIOHANG")',
+            type: 'GET',
+            data: { maSP: masp },
+            success: function (data) {
+                if (data =='True') {
+                    alert('Thêm sản phẩm vào giỏ hàng thành công');
+                }
+                else {
+                    alert('Vui lòng đăng nhập');
+                }
+
+            },
+            error: function (ex) {
+                alert('Error occurred: ' + ex.responseText);
+            }
+        });
+    }
+</script>

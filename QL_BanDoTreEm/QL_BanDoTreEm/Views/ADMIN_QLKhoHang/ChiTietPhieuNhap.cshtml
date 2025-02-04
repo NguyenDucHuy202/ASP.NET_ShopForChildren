@@ -1,0 +1,72 @@
+﻿@model QL_BanDoTreEm.Models.PHIEUDAT
+
+@*<table>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Nhà cung cấp</th>
+            <th>Số lượng hiện tại</th>
+            <th>Đơn giá nhập</th>
+            <th>Số lượng cần đặt</th>
+        </tr>
+        @foreach (QL_BanDoTreEm.Models.CHITIET_PHIEUDAT ctpd in Model.CHITIET_PHIEUDAT.OrderByDescending(t=>t.SANPHAM.TENSANPHAM))
+        {
+            <tr>
+                <td>@ctpd.SANPHAM.TENSANPHAM</td>
+                <td>@ctpd.SANPHAM.THUONGHIEU.TENTHUONGHIEU</td>
+                <td>@ctpd.SANPHAM.SOLUONG</td>
+                <td>@ctpd.SANPHAM.DONGIANHAP</td>
+                <td><input class="soLuong" id="@(Model.ID_PHIEUDAT + "-" + ctpd.ID_SANPHAM)" name="danhSachSanPham[]" type="number" min="1" value="@ctpd.SOLUONGDAT" onchange="thayDoiSoLuong(this)" /> </td>
+            </tr>
+        }
+    </table>
+    Tổng tiền: <div id="tongTien">@Model.TONGTIEN</div>*@
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .soLuong {
+        width: 50px; /* Adjust the width as needed */
+    }
+
+    #tongTien {
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+</style>
+
+<table style="background-color:whitesmoke">
+    <tr>
+        <th>Tên sản phẩm</th>
+        <th>Nhà cung cấp</th>
+        <th>Số lượng hiện tại</th>
+        <th>Đơn giá nhập</th>
+        <th>Số lượng cần đặt</th>
+    </tr>
+    @foreach (QL_BanDoTreEm.Models.CHITIET_PHIEUDAT ctpd in Model.CHITIET_PHIEUDAT.OrderByDescending(t => t.SANPHAM.TENSANPHAM))
+    {
+        <tr>
+            <td>@ctpd.SANPHAM.TENSANPHAM</td>
+            <td>@ctpd.SANPHAM.THUONGHIEU.TENTHUONGHIEU</td>
+            <td>@ctpd.SANPHAM.SOLUONG</td>
+            <td>@ctpd.SANPHAM.DONGIANHAP</td>
+            <td><input class="soLuong" id="@(Model.ID_PHIEUDAT + "-" + ctpd.ID_SANPHAM)" name="danhSachSanPham[]" type="number" min="1" value="@ctpd.SOLUONGDAT" onchange="thayDoiSoLuong(this)" /> </td>
+        </tr>
+    }
+</table>
+
+Tổng tiền: <div id="tongTien">@Model.TONGTIEN</div>

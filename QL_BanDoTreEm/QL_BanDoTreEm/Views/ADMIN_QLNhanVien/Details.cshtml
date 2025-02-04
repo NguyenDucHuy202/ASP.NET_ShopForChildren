@@ -1,0 +1,71 @@
+﻿@model QL_BanDoTreEm.Models.NHANVIEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutADMIN.cshtml";
+}
+
+
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+<div class="header-wrapper">
+    <div class="header-title">
+        <span>Chi tiết</span>
+        <h2>Nhân viên</h2>
+    </div>
+    <div class="user-info">
+        <img src="~/Content/images/logo.png" alt="" />
+    </div>
+</div>
+
+<div class="tabular-wrapper">
+    <a href="/ADMIN_QLNhanVien/Index">
+        <div class="back">
+            <i class="icon-circle"></i>
+        </div>
+    </a>
+
+    <div class="detail">
+        <table class="table">
+            <tr>
+                <th class="header-title">ID</th>
+                <td>@Html.DisplayFor(model => model.ID_NHANVIEN)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Tên nhân viên</th>
+                <td>@Html.DisplayFor(model => model.TENNHANVIEN)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Giới tính</th>
+                <td>@Html.DisplayFor(model => model.PHAI)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Địa chỉ</th>
+                <td>@Html.DisplayFor(model => model.DIACHI)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Email</th>
+                <td>@Html.DisplayFor(model => model.EMAIL)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Điện Thoại</th>
+                <td>@Html.DisplayFor(model => model.DIENTHOAI)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Chức Vụ</th>
+                <td>@Html.DisplayFor(model => model.CHUCVU)</td>
+            </tr>
+          
+
+
+        </table>
+    </div>
+
+    <a style="text-decoration: none" href="/ADMIN_QLNhanVien/Edit/@Model.ID_NHANVIEN">
+        <div class="button">
+            EDIT
+        </div>
+    </a>
+</div>
+
+
+

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.KHACHHANG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutRepository.cshtml";
+}
+
+<h2>THÔNG TIN KHÁCH HÀNG</h2>
+@Html.ActionLink("Create New", "Create","KHACHHANG")
+<table class="table">
+    <tr>
+        <th>
+            Họ Và Tên
+        </th>
+        <th>
+            Giới Tính
+        </th>
+        <th>
+            Địa Chỉ Nhận Hàng
+        </th>
+        <th>
+            Gmail
+        </th>
+        <th>
+            Số Điện Thoại
+        </th>
+
+        <th>
+
+            Action
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENKHACHHANG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PHAIKHACHHANG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DIACHI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMAIL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DIENTHOAI)
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh sửa thông tin của bạn", "Edit", new { id = item.ID_KHACHHANG })
+
+            </td>
+        </tr>
+    }
+
+</table>

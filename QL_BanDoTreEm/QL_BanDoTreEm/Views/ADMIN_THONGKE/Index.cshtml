@@ -1,0 +1,156 @@
+﻿@using QL_BanDoTreEm.Models
+@model List<HOADON>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutADMIN.cshtml";
+}
+
+<div class="header-wrapper">
+    <div class="header-title">
+        <span>Quản lý</span>
+        <h2>Doanh Thu</h2>
+    </div>
+    <div class="user-info">
+        <img src="~/Images/profile.png" alt="" />
+    </div>
+</div>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+@{ 
+    List<int> thongKeThu = new List<int>();
+    List<int> thongKeChi = new List<int>();
+
+    List<PHIEUDAT> listPD = ViewBag.listPD as List<PHIEUDAT>;
+
+    for (int i = 1; i <= 12; i++)
+    {
+        thongKeThu.Add(Model.Where(t => t.NGAYLAP.Value.Month == i).Sum(t => t.TONGTIEN) ?? 0);
+
+        thongKeChi.Add(listPD.Where(t => t.NGAYDATHANG.Value.Month == i).Sum(t => t.TONGTIEN) ?? 0);
+    }
+}
+
+<div id="container" class="tabular-wrapper">
+    <script>
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Tình hình thu chi trong tháng'
+        },
+        xAxis: {
+    categories: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12']
+        },
+        yAxis: {
+    title: {
+        text: 'ngàn'
+            },
+            labels: {
+        format: '{value}'
+            }
+    },
+        tooltip: {
+    crosshairs: true,
+            shared: true
+        },
+        series: [{
+    name: 'Tổng thu',
+            marker: {
+        symbol: 'square'
+            },
+            @{ int j = 0;}
+    data: [
+       @thongKeThu[j++],
+               @thongKeThu[j++],
+               @thongKeThu[j++],
+               @thongKeThu[j++],
+               @thongKeThu[j++],
+               @thongKeThu[j++],
+               @thongKeThu[j++],
+               @thongKeThu[j++],
+               @thongKeThu[j++],
+               @thongKeThu[j++],
+               @thongKeThu[j++],
+               @thongKeThu[j++],
+            ]
+
+        }, {
+    name: 'Tổng chi',
+            marker: {
+        symbol: 'diamond'
+            },
+             @{ j = 0;}
+            data: [@thongKeChi[j++],
+                @thongKeChi[j++],
+                @thongKeChi[j++],
+                @thongKeChi[j++],
+                @thongKeChi[j++],
+                @thongKeChi[j++],
+                @thongKeChi[j++],
+                @thongKeChi[j++],
+                @thongKeChi[j++],
+                @thongKeChi[j++],
+                @thongKeChi[j++],
+                @thongKeChi[j++]]
+        }],
+    });
+
+    </script>
+</div>
+
+<div class="card-container">
+    <h3 class="main-title">Báo cáo</h3>
+    <div class="card-wrapper">
+        <div class="payment-card" style="background-color: #fce3f1 ">
+            <div class="card-header">
+                <div class="amount">
+                    <span class="title">Tổng thu</span>
+                    <span class="amount-value">@thongKeThu.Sum().ToString("N0")</span>
+                </div>
+                <i class='bx bx-dollar card-icon' style="background-color: #d971ab"></i>
+            </div>
+            <span class="card-detail">Đơn vị: Nghìn vnđ</span>
+        </div>
+
+        <div class="payment-card" style="background-color: #e8f8ff ">
+            <div class="card-header">
+                <div class="amount">
+                    <span class="title">Tổng chi</span>
+                    <span class="amount-value">@thongKeChi.Sum().ToString("N0")</span>
+                </div>
+                <i class='bx bx-dollar card-icon' style="background-color: #6facc7"></i>
+            </div>
+            <span class="card-detail">payment</span>
+        </div>
+
+        <div class="payment-card" style="background-color: #f2ebff ">
+            <div class="card-header">
+                <div class="amount">
+                    <span class="title">Tổng số đơn hàng nhập</span>
+                    <span class="amount-value">@listPD.Count</span>
+                </div>
+                <i class='bx bx-cart-download card-icon' style="background-color: #8f6bd1"></i>
+            </div>
+            <span class="card-detail">import orders</span>
+        </div>
+
+        <div class="payment-card" style="background-color: #e1fced ">
+            <div class="card-header">
+                <div class="amount">
+                    <span class="title">Tổng số đơn hàng xuất</span>
+                    <span class="amount-value">@Model.Count</span>
+                </div>
+                <i class='bx bx-vertical-top card-icon' style="background-color: #60bf8b"></i>
+            </div>
+            <span class="card-detail">export orders</span>
+        </div>
+    </div>
+</div>
+
+

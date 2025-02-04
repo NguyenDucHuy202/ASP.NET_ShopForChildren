@@ -1,0 +1,26 @@
+﻿@{
+    QL_BanDoTreEm.Models.KHACHHANG kh = Session["KH"] as QL_BanDoTreEm.Models.KHACHHANG;
+}
+@if (kh == null)
+{
+    <li class="account">
+        <a href="#">
+            <span id="accountName">Tài khoản</span>
+            <i class="fa fa-angle-down"></i>
+        </a>
+        <ul class="account_selection">
+            <li id="loginLink"><a href="@Url.Action("LoginAdmin", "DANGNHAP")"><i class="fa fa-sign-in" aria-hidden="true"></i><span id="loginText">Đăng nhập</span></a></li>
+            <li id="registerLink"><a href="@Url.Action("Create", "TAIKHOAN")"><i class="fa fa-user-plus" aria-hidden="true"></i>Đăng ký</a></li>
+        </ul>
+    </li>
+}
+else
+{
+    <li class="account">
+        <span id="accountName">@Html.ActionLink("Hi! " + kh.TENKHACHHANG, "Index", "TRANGCHU", new { style = "color: white" })</span>
+        <i class="fa fa-angle-down"></i>
+        <ul class="account_selection">
+            <li id="loginLink"><a href="@Url.Action("Logout", "DANGNHAP")"><i class="fa fa-sign-in" aria-hidden="true"></i><span id="loginText">Log out</span></a></li>
+        </ul>
+    </li>
+}

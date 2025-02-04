@@ -1,0 +1,141 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.KHACHHANG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutADMIN.cshtml";
+}
+
+
+
+
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+<div class="header-wrapper">
+    <div class="header-title">
+        <span>Danh mục</span>
+        <h2>Người dùng</h2>
+    </div>
+    <div class="user-info">
+        <form action="/ADMIN_QLNguoiDung/Index">
+            <div class="search-box">
+                <i class='bx bx-search icon'></i>
+                <input type="search" id="search" name="search" placeholder="Search..." />
+                <button type="submit" class="back">OK</button>
+            </div>
+        </form>
+        <img src="~/Images/profile.png" alt="" />
+    </div>
+</div>
+
+<div class="card-container">
+    <h3 class="main-title">Báo cáo</h3>
+    <div class="card-wrapper">
+        @*<div class="payment-card" style="background-color: #fceff3 ">
+                <div class="card-header">
+                    <div class="amount">
+                        <span class="title">Tổng sản phẩm hiện hành</span>
+                        <span class="amount-value">@ViewBag.SoLuongSPDangBan</span>
+                    </div>
+                    <i class='bx bx-list-check card-icon' style="background-color: #e38989"></i>
+                </div>
+                <span class="card-detail">on sale</span>
+            </div>*@
+
+        <div class="payment-card" style="background-color: #f1e7f8 ">
+            <div class="card-header">
+                <div class="amount">
+                    <span class="title">Số người dùng hiện tại</span>
+                    <span class="amount-value">@ViewBag.SoLuongNguoiDung</span>
+                </div>
+                <a href="~/ADMIN_QLKhoHang/SanPhamCanNhap"><i class='bx bx-list-minus card-icon' style="background-color: #be84dd"></i></a>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+@{
+    string iconClass = "";
+    if (ViewBag.IconClass == "bxs-up-arrow")
+    {
+        iconClass = "bxs-down-arrow";
+    }
+    else
+    {
+        iconClass = "bxs-up-arrow";
+    }
+}
+
+<div class="tabular-wrapper">
+    <h3 class="main-title">Danh mục người dùng</h3>
+
+    <div class="table-container">
+        <table>
+            <thead>
+            
+            <th>
+                Họ Tên
+            </th>
+            <th>
+                Giới tính
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Điện Thoại
+            </th>
+            <th>
+                Mật Khẩu
+            </th>
+            <th>
+                Action
+            </th>
+            </thead>
+            @{
+                var reversedModel = Model.Reverse().ToList();
+            }
+
+            @foreach (var item in reversedModel)
+            {
+              
+                <tr>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TENKHACHHANG)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PHAIKHACHHANG)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DIACHI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EMAIL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DIENTHOAI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TAIKHOAN.MATKHAU)
+                    </td>
+                    <td>
+                        <a href="/ADMIN_QLNguoiDung/Details/@item.ID_KHACHHANG">
+                            <i class='bx bx-add-to-queue icon'></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+
+
+        </table>
+    </div>
+</div>
+
+

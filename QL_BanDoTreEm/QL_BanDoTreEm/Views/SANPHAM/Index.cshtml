@@ -1,0 +1,199 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutRepository.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table ">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th width="20" >
+                @Html.DisplayNameFor(model => model.ID_SANPHAM)
+            </th>
+            <td width="80">
+                @Html.DisplayFor(modelItem => item.ID_SANPHAM)
+            </td>
+        </tr>
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.TENSANPHAM)
+            </th>
+            <td width="80">
+                @Html.DisplayFor(modelItem => item.TENSANPHAM)
+            </td>
+        </tr>
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.THANHPHAN)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.THANHPHAN)
+            </td>
+        </tr>
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.HUONGDANSUDUNG)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.HUONGDANSUDUNG)
+            </td>
+        </tr>
+
+
+
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.HUONGDANBAOQUAN)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.HUONGDANBAOQUAN)
+            </td>
+        </tr>
+
+
+
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.HANSUDUNG)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.HANSUDUNG)
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.UUTIENNOIBAT)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.UUTIENNOIBAT)
+            </td>
+        </tr>
+
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.CHATLIEU)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.CHATLIEU)
+            </td>
+        </tr>
+
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.SOLUONG)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.SOLUONG)
+            </td>
+        </tr>
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.KICHTHUOC)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.KICHTHUOC)
+            </td>
+        </tr>
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.THETICH)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.THETICH)
+            </td>
+        </tr>
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.TRONGLUONG)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.TRONGLUONG)
+            </td>
+        </tr>
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.DONGIABAN)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.DONGIABAN)
+            </td>
+        </tr>
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.NGAYSANXUAT)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.NGAYSANXUAT)
+            </td>
+        </tr>
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.DOTUOIPHUHOP)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.DOTUOIPHUHOP)
+            </td>
+        </tr>
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.LUUY)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.LUUY)
+            </td>
+        </tr>
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.HINHANH)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.HINHANH)
+            </td>
+        </tr>
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.DONGIANHAP)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.DONGIANHAP)
+            </td>
+        </tr>
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.LOAISANPHAM.TENLOAISP)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.LOAISANPHAM.TENLOAISP)
+            </td>
+        </tr>
+        <tr>
+            <th width="20">
+                @Html.DisplayNameFor(model => model.THUONGHIEU.TENTHUONGHIEU)
+            </th>
+             <td width="80">
+                @Html.DisplayFor(modelItem => item.THUONGHIEU.TENTHUONGHIEU)
+            </td>
+        </tr>
+        <tr>
+             <td width="80">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_SANPHAM }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_SANPHAM }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_SANPHAM })
+            </td>
+        </tr>
+
+    }
+
+</table>

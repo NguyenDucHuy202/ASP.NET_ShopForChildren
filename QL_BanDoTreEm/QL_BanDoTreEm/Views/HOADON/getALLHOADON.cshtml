@@ -1,0 +1,119 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.HOADON>
+
+@{
+    ViewBag.Title = "getALLHOADON";
+    Layout = "~/Views/Shared/_LayoutADMIN.cshtml";
+}
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+<div class="header-wrapper">
+    <div class="header-title">
+        <span>Danh mục</span>
+        <h2>QUẢN LÝ HÓA ĐƠN</h2>
+    </div>
+    <div class="user-info">
+        <form action="/ADMIN_QLSanPham/Index">
+            <div class="search-box">
+                <i class='bx bx-search icon'></i>
+                <input type="search" id="search" name="search" placeholder="Search..." />
+                <button type="submit" class="back">OK</button>
+            </div>
+        </form>
+        <img src="~/Images/profile.png" alt="" />
+    </div>
+</div>
+
+
+
+@{
+    string iconClass = "";
+    if (ViewBag.IconClass == "bxs-up-arrow")
+    {
+        iconClass = "bxs-down-arrow";
+    }
+    else
+    {
+        iconClass = "bxs-up-arrow";
+    }
+}
+
+<div class="tabular-wrapper">
+    <h3 class="main-title">Danh mục hóa đơn</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+            <th>
+                Ngày lập
+            </th>
+            <th>
+                Giảm giá
+            </th>
+            <th>
+                Phí Vận Chuyển
+            </th>
+            <th>
+                Tổng Tiền
+            </th>
+            <th>
+                Trạng Thái
+            </th>
+            <th>
+                ID Nhân Viên
+            </th>
+            <th>
+                ID Giảm Giá
+            </th>
+            <th>
+                Tên Khách Hàng
+            </th>
+            <th>
+                Action
+            </th>
+            </thead>
+            @{
+                var reversedModel = Model.Reverse().ToList();
+            }
+            @foreach (var item in reversedModel)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGAYLAP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GIAMGIA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PHIVANCHUYEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TONGTIEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TRANGTHAI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_NHANVIEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GIAMGIA1.ID_GIAMGIA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KHACHHANG.TENKHACHHANG)
+                    </td>
+
+                    <td>
+                        <a href="~/HOADON/Edit/@item.ID_HOADON">
+                            <i class='bx bx-edit-alt icon btn btn-primary'></i>
+                        </a>|
+                        <a href="~/HOADON/Delete/@item.ID_HOADON">
+                            <i class='bx bx-trash icon'></i>
+                        </a>
+                    </td>
+                </tr>
+
+            }
+
+
+        </table>
+    </div>
+</div>

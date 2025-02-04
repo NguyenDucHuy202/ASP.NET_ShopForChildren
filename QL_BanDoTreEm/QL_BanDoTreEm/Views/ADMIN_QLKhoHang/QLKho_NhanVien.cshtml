@@ -1,0 +1,135 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.SANPHAM>
+@{
+    ViewBag.Title = "QLKho_NhanVien";
+    Layout = "~/Views/Shared/_LayoutNHANVIEN.cshtml";
+}
+
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+<div class="header-wrapper">
+    <div class="header-title">
+        <span>Danh mục</span>
+        <h2>Kho</h2>
+    </div>
+    <div class="user-info">
+        <form action="/ADMIN_QLSanPham/Index">
+            <div class="search-box">
+                <i class='bx bx-search icon'></i>
+                <input type="search" id="search" name="search" placeholder="Search..." />
+                <button type="submit" class="back">OK</button>
+            </div>
+        </form>
+        <img src="~/Images/profile.png" alt="" />
+    </div>
+</div>
+
+<!--<div class="card-container">
+    <h3 class="main-title">Báo cáo</h3>
+    <div class="card-wrapper">-->
+        @*<div class="payment-card" style="background-color: #fceff3 ">
+                <div class="card-header">
+                    <div class="amount">
+                        <span class="title">Tổng sản phẩm hiện hành</span>
+                        <span class="amount-value">@ViewBag.SoLuongSPDangBan</span>
+                    </div>
+                    <i class='bx bx-list-check card-icon' style="background-color: #e38989"></i>
+                </div>
+                <span class="card-detail">on sale</span>
+            </div>*@
+
+        @*<div class="payment-card" style="background-color: #f1e7f8 ">
+            <div class="card-header">
+                <div class="amount">
+                    <span class="title">Số sản phẩm cần nhập</span>
+                    <span class="amount-value">@ViewBag.SoLuongSPCanNhap</span>
+                </div>
+                <a href="~/ADMIN_QLKhoHang/SanPhamCanNhap"><i class='bx bx-list-minus card-icon' style="background-color: #be84dd"></i></a>
+            </div>
+
+        </div>*@
+
+
+
+    <!--</div>
+</div>-->
+
+@{
+    string iconClass = "";
+    if (ViewBag.IconClass == "bxs-up-arrow")
+    {
+        iconClass = "bxs-down-arrow";
+    }
+    else
+    {
+        iconClass = "bxs-up-arrow";
+    }
+}
+
+<div class="tabular-wrapper">
+    <h3 class="main-title">Danh mục sản phẩm</h3>
+
+    <div class="table-container">
+        <table>
+            <thead>
+            <th>
+                <a href="/ADMIN_QLSanPham/Index?SortColumn=ID_SANPHAM&IconClass=@iconClass&page=1" style="text-decoration: none;">ID</a>
+                @if (ViewBag.SortColumn == "ID_SANPHAM")
+                {
+                    <i class="bx @ViewBag.IconClass"></i>
+                }
+            </th>
+            <th>
+                <a href="/Admin_SanPham/Index?SortColumn=TENSP&IconClass=@iconClass&page=1" style="text-decoration: none;">Tên SP</a>
+                @if (ViewBag.SortColumn == "TENSP")
+                {
+                    <i class="bx @ViewBag.IconClass"></i>
+                }
+            </th>
+            <th>
+                Giá bán
+            </th>
+            <th>
+                <a href="/ADMIN_QLSanPham/Index?SortColumn=DONGIANHAP&IconClass=@iconClass&page=1" style="text-decoration: none;">Giá nhập</a>
+                @if (ViewBag.SortColumn == "GIANHAP")
+                {
+                    <i class="bx @ViewBag.IconClass"></i>
+                }
+            </th>
+            <th>
+                Số Lượng
+            </th>
+            <th>
+                Action
+            </th>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr style="@(string.IsNullOrEmpty(item.SOLUONG) || (int.TryParse(item.SOLUONG, out var quantity) && quantity < 100) ? "background-color:aquamarine ;" : "")">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_SANPHAM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TENSANPHAM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DONGIABAN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DONGIANHAP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SOLUONG)
+                    </td>
+                    <td>
+                        <a href="/SANPHAM/Details/@item.ID_SANPHAM">
+                            <i class='bx bx-add-to-queue icon'></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+
+
+        </table>
+    </div>
+</div>

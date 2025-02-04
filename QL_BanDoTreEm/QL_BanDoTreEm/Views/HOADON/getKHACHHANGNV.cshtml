@@ -1,0 +1,100 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.HOADON>
+
+@{
+    ViewBag.Title = "getKHACHHANGNV";
+    Layout = "~/Views/Shared/_LayoutNHANVIEN.cshtml";
+}
+
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+<div class="header-wrapper">
+    <div class="header-title">
+        <span>lịch sử</span>
+        <h2>Mua hàng</h2>
+    </div>
+    <div class="user-info">
+        <form action="/ADMIN_QLSanPham/Index">
+            <div class="search-box">
+                <i class='bx bx-search icon'></i>
+                <input type="search" id="search" name="search" placeholder="Search..." />
+                <button type="submit" class="back">OK</button>
+            </div>
+        </form>
+        <img src="~/Images/profile.png" alt="" />
+    </div>
+</div>
+
+
+
+
+<div class="tabular-wrapper">
+    <h3 class="main-title">Hóa đơn</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+            <th>
+                Ngày lập
+            </th>
+            <th>
+                Giảm giá
+            </th>
+            <th>
+                Phí Vận Chuyển
+            </th>
+            <th>
+                Tổng Tiền
+            </th>
+            <th>
+                Trạng Thái
+            </th>
+            <th>
+                ID Nhân Viên
+            </th>
+            <th>
+                ID Giảm Giá
+            </th>
+            <th>
+                Tên Khách Hàng
+            </th>
+
+            </thead>
+            @{
+                var reversedModel = Model.Reverse().ToList();
+            }
+            @foreach (var item in reversedModel)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGAYLAP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GIAMGIA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PHIVANCHUYEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TONGTIEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TRANGTHAI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_NHANVIEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GIAMGIA1.ID_GIAMGIA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KHACHHANG.TENKHACHHANG)
+                    </td>
+
+
+                </tr>
+
+            }
+
+
+        </table>
+    </div>
+
+

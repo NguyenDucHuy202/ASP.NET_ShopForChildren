@@ -1,0 +1,79 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "SanPhamCanNhap";
+    Layout = "~/Views/Shared/_LayoutADMIN.cshtml";
+}
+
+@using (Html.BeginForm("TaoPhieuNhap", "ADMIN_QLKhoHang"))
+{
+    <table class="table">
+
+        @if (!(Model == null || Model.Count() == 0))
+        {
+            <input type="checkbox" id="chonTatCa" />
+            <strong>Chọn tất cả</strong>
+
+        }
+
+        <button style="margin-left: 80%; padding: 10px 20px; background-color: #d9534f; color: #fff; border: none; border-radius: 5px; cursor: pointer;" class="btn btn-danger ">Tạo Phiếu Nhập</button>
+        <div class="card-body container " style="padding:1px 0.5rem 1px 1rem;">
+
+            <!-- Single item -->
+            @foreach (var item in Model)
+            {
+
+                string key = item.ID_SANPHAM;
+                <input type="checkbox" name="sanPhamMua[]" value="@key" />
+                @*<a class="" href="/TRANGCHU/Details/@key">*@
+                
+                <div class="row my-custom-card" style="border: 1px solid #ccc; padding: 15px; border-radius: 10px; background-color: #fff; margin-bottom: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                        <!-- Image -->
+                        <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                            <img src="@Url.Content("~/Content/images/ProductImages/" + item.HINHANH + ".jpg")" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;" alt="Product Image" />
+                        </div>
+                        <!-- Image -->
+                    </div>
+
+                    <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                        <!-- Data -->
+                        <p class="fw-bold">@item.TENSANPHAM</p>
+                        <!-- Data -->
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                        <!-- Quantity and Price -->
+                        <p class="text-start text-md-center">
+                            Số lượng: <strong>@item.SOLUONG</strong>
+                        </p>
+                        <!-- Quantity and Price -->
+                    </div>
+                </div>
+
+                <hr class="my-4" />
+                <!-- Single item -->
+                @*</a>*@
+
+            }
+        </div>
+
+    </table>
+}
+
+<script>
+    // Lấy tham chiếu đến checkbox "Chọn tất cả"
+    var selectAllCheckbox = document.getElementById('chonTatCa');
+
+    // Lấy danh sách các checkbox cần tự động chọn
+    var checkboxes = document.querySelectorAll('input[name="sanPhamMua[]"]');
+
+    // Thêm sự kiện khi checkbox "Chọn tất cả" thay đổi trạng thái
+    selectAllCheckbox.addEventListener('change', function () {
+        // Duyệt qua tất cả các checkbox và thiết lập trạng thái chọn tương ứng
+        checkboxes.forEach(function (checkbox) {
+            checkbox.checked = selectAllCheckbox.checked;
+        });
+    });
+</script>
+

@@ -1,0 +1,14 @@
+﻿
+@{
+    QL_BanDoTreEm.Models.KHACHHANG kh = Session["KH"] as QL_BanDoTreEm.Models.KHACHHANG;
+}
+@if (kh != null)
+{
+
+            <li id="loginLink"><a href="@Url.Action("getHOADONKHACHHANG", "HOADON")"><span id="loginText">Theo dõi đơn hàng</span></a></li>
+
+}
+else
+{
+
+}

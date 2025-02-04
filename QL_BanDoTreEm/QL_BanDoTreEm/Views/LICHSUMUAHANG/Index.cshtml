@@ -1,0 +1,89 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.HOADON>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+<script src="https://kit.fontawesome.com/yourcode.js"></script>
+<h2>Index</h2>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<div class="tabular-wrapper">
+    <h3 class="main-title">Các hóa đơn của bạn</h3>
+    <a href="/SANPHAM/Create">
+        <i class='bx bx-add-to-queue icon'></i>
+    </a>
+    <div class="table-container ">
+        <table>
+            <thead style="background-color:black; color:white">
+            <th>
+                Ngày lập
+            </th>
+            <th>
+                Phí vận chuyển
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            <th>
+                Tổng Tiền
+            </th>
+            <th>
+                Action
+            </th>
+            </thead>
+
+
+            @{
+                var reversedModel = Model.Reverse().ToList();
+            }
+
+            @foreach (var item in reversedModel)
+            {
+                <tr style="padding:5px;">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGAYLAP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PHIVANCHUYEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TRANGTHAI)
+                    </td>
+
+                    <td>
+                        @if (item.TONGTIEN.ToString().Length == 4)
+                        {
+                            @(string.Format("{0:0,000}", item.TONGTIEN) + ".000đ")
+                        }
+                        else
+                        {
+                            @(string.Format("{0:,000}", item.TONGTIEN) + ".000đ")
+                        }
+
+                    </td>
+
+
+                    <td>
+                        <a href="/LICHSUMUAHANG/ChiTietDonHang/@item.ID_HOADON">
+                            Chi tiết
+                        </a>
+                        <a href="/SANPHAM/Edit/@item.ID_HOADON">
+                            <i class='bx bx-edit-alt icon'></i>
+                        </a>
+                       
+                    </td>
+                </tr>
+                
+            }
+
+
+        </table>
+    </div>
+</div>

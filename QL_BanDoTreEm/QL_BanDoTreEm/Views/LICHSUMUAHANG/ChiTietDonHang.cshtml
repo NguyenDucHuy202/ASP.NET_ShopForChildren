@@ -1,0 +1,85 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.CHITIET_HOADON>
+
+@{
+    ViewBag.Title = "ChiTietDonHang";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+<h2>Chi tiết đơn hàng</h2>
+
+
+<table class="table">
+    <div class="card-body container" style="padding:1px 0.5rem 1px 1rem">
+        <!-- Single item -->
+        @foreach (var item in Model)
+        {
+            string key = item.ID_SANPHAM;
+           <a class="" href="/TRANGCHU/Details/@key">
+               <div class="row" style="border: 1px solid; padding:10px;border-radius:10px;margin-bottom:10px">
+                   <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                       <!-- Image -->
+                       <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                           <img src="@Url.Content("~/Content/images/ProductImages/" + item.SANPHAM.HINHANH + ".jpg")" style="width:40%; height: 40%;" />
+
+
+                       </div>
+                       <!-- Image -->
+                   </div>
+
+                   <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                       <!-- Data -->
+                       <p><strong>@item.SANPHAM.TENSANPHAM</strong></p>
+
+                       <p></p>
+                       <!-- Data -->
+                   </div>
+
+                   <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                       <!-- Price -->
+                       <p class="text-start text-md-center">
+                           Số lượng
+                           <strong>
+                               @item.SOLUONGMUA
+                           </strong>
+
+
+                       </p>
+                       <!-- Price -->
+                       <!-- Quantity -->
+                       <!-- Quantity -->
+                       <!-- Sum Price -->
+                       <p class="text-start text-md-center">
+                           @{
+                               string tongtien = (int.Parse(item.SANPHAM.DONGIABAN.ToString()) * int.Parse(item.SOLUONGMUA.ToString())).ToString();
+                           }
+                           @if (tongtien.Length == 4)
+                           {
+                               <strong> Tổng tiền: @(string.Format("{0:0,000}", item.SANPHAM.DONGIABAN * item.SOLUONGMUA) + ".000đ")</strong>
+
+                           }
+                           else
+                           {
+                               <strong> Tổng tiền: @(string.Format("{0:,000}", item.SANPHAM.DONGIABAN * item.SOLUONGMUA) + ".000đ")</strong>
+
+                           }
+                       </p>
+                       <!-- Sum Price -->
+                   </div>
+               </div>
+               <hr class="my-4" />
+               <!-- Single item -->
+           </a>
+      
+        }
+    </div>
+
+</table>

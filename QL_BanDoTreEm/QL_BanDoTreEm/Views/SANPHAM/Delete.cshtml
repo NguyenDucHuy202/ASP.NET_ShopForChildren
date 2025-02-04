@@ -1,0 +1,43 @@
+﻿@model QL_BanDoTreEm.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutRepository.cshtml";
+}
+
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+<h2>Delete</h2>
+
+<h3>Xóa Nhen?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TENSANPHAM)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TENSANPHAM)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_SANPHAM)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ID_SANPHAM)
+        </dd>
+        <dd>
+            <td><img style="width:10%;height:10%" src="~/Content/images/ProductImages/@(Model.HINHANH+".jpg")" alt="" /></td>
+
+
+
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index", "ADMIN_QLSanPham")
+        </div>
+    }
+</div>

@@ -1,0 +1,126 @@
+﻿@model QL_BanDoTreEm.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutADMIN.cshtml";
+}
+
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+<div class="header-wrapper">
+    <div class="header-title">
+        <span>Chi tiết</span>
+        <h2>Sản phẩm</h2>
+    </div>
+    <div class="user-info">
+        <img src="~/Content/images/logo.png" alt="" />
+    </div>
+</div>
+<div class="card-container">
+    <h3 class="main-title">Báo cáo</h3>
+    <div class="card-wrapper">
+        <div class="payment-card" style="background-color: #fceff3 ">
+            <div class="card-header">
+                <div class="amount">
+                    <span class="title">Tổng Sản Phẩm Đã Bán</span>
+                    <span class="amount-value">@ViewBag.TongSoLuongBanRa</span>
+                </div>
+                <i class='bx bx-list-check card-icon' style="background-color: #e38989"></i>
+            </div>
+
+        </div>
+
+        <div class="payment-card" style="background-color: #f1e7f8 ">
+            <div class="card-header">
+                <div class="amount">
+                    <span class="title">Tổng Sản Phẩm Đã Nhập</span>
+                    <span class="amount-value">@ViewBag.SoLuongDat</span>
+                </div>
+                <i class='bx bx-list-minus card-icon' style="background-color: #be84dd"></i>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="tabular-wrapper">
+    <a href="/ADMIN_QLSanPham/Index">
+        <div class="back">
+            <i class="icon-circle"></i>
+        </div>
+    </a>
+
+    <div class="detail">
+        <table class="table">
+            <tr>
+                <th class="header-title">Mã sản phẩm</th>
+                <td>@Html.DisplayFor(model => model.ID_SANPHAM)</td>
+            <tr />
+            <tr>
+                <th class="header-title">Tên sản phẩm</th>
+                <td>@Html.DisplayFor(model => model.TENSANPHAM)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Thành phần</th>
+                <td>@Html.DisplayFor(model => model.THANHPHAN)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Hướng dẫn sử dụng</th>
+                <td>@Html.DisplayFor(model => model.HUONGDANSUDUNG)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Hướng dẫn bảo quản</th>
+                <td>@Html.DisplayFor(model => model.HUONGDANBAOQUAN)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Hạn sử dụng</th>
+                <td>@Html.DisplayFor(model => model.HANSUDUNG)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Ưu điểm nổi bật</th>
+                <td>@Html.DisplayFor(model => model.UUTIENNOIBAT)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Ảnh sản phẩm</th>
+                <td><img style="width:10%;height:10%" src="~/Content/images/ProductImages/@(Model.HINHANH+".jpg")" alt="" /></td>
+            </tr>
+            <tr>
+                <th class="header-title">Trọng Lượng</th>
+                <td>@Html.DisplayFor(model => model.TRONGLUONG)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Đơn giá bán</th>
+                <td>@Html.DisplayFor(model => model.DONGIABAN)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Ngày sản xuất</th>
+                <td>@Html.DisplayFor(model => model.NGAYSANXUAT)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Độ tuổi </th>
+                <td>@Html.DisplayFor(model => model.DOTUOIPHUHOP)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Lưu ý</th>
+                <td>@Html.DisplayFor(model => model.LUUY)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Nhà sản xuất</th>
+                <td>@Html.DisplayFor(model => model.THUONGHIEU.TENTHUONGHIEU)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Đơn Giá Nhập</th>
+                <td>@Html.DisplayFor(model => model.DONGIANHAP)</td>
+            </tr>
+        </table>
+    </div>
+
+    <a style="text-decoration: none" href="/SANPHAM/Edit/@Model.ID_SANPHAM">
+        <div class="button">
+            EDIT
+        </div>
+    </a>
+</div>
+
+
+
+

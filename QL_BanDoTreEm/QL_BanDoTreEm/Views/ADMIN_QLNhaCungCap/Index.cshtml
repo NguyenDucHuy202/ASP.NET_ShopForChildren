@@ -1,0 +1,98 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.NHACUNGCAP>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutADMIN.cshtml";
+}
+
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+<div class="header-wrapper">
+    <div class="header-title">
+        <span>Danh mục</span>
+        <h2>Quản lý Nhà Cung Cấp</h2>
+    </div>
+    <div class="user-info">
+        <form action="/ADMIN_QLSanPham/Index">
+            <div class="search-box">
+                <i class='bx bx-search icon'></i>
+                <input type="search" id="search" name="search" placeholder="Search..." />
+                <button type="submit" class="back">OK</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+
+@{
+    string iconClass = "";
+    if (ViewBag.IconClass == "bxs-up-arrow")
+    {
+        iconClass = "bxs-down-arrow";
+    }
+    else
+    {
+        iconClass = "bxs-up-arrow";
+    }
+}
+
+<div class="tabular-wrapper">
+    <h3 class="main-title">Danh mục nhà cung cấp</h3>
+    <a href="/ADMIN_QLNhaCungCap/Create">
+        <i class='bx bx-add-to-queue icon'></i>
+    </a>
+    <div class="table-container">
+        <table>
+            <thead>
+            <th>
+               Tên NCC
+            </th>
+            <th>
+               Nơi Cung Cấp
+            </th>
+            <th>
+               SĐT
+            </th>
+            <th>Action</th>
+            </thead>
+            @{
+                var reversedModel = Model.Reverse().ToList();
+            }
+
+            @foreach (var item in reversedModel)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TENNHACUNGCAP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NOICUNGCAP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DIENTHOAI)
+                    </td>
+
+                    <td>
+                        <a href="/ADMIN_QLNhaCungCap/Details/@item.ID_NHACUNGCAP">
+                            <i class='bx bx-detail icon'></i>
+                        </a>|
+                        <a href="/ADMIN_QLNhaCungCap/Edit/@item.ID_NHACUNGCAP">
+                            <i class='bx bx-edit-alt icon'></i>
+                        </a>|
+                        <a href="/ADMIN_QLNhaCungCap/Delete/@item.ID_NHACUNGCAP">
+                            <i class='bx bx-trash icon'></i>
+                        </a>
+                    </td>
+                </tr>
+
+            }
+
+
+        </table>
+    </div>
+</div>
+
+
+
+

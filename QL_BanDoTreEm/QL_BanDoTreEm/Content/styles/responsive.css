@@ -1,0 +1,266 @@
+@charset "utf-8";
+
+/**************************************************
+
+[Table of Contents]
+
+1.
+2. Main Slider
+3. Slider Show
+4. Product Flex
+5. Deal of the week
+6. Benefit
+7. Blogs
+8. Newsletter
+
+**************************************************/
+
+/****************************************
+2. Main Slider
+****************************************/
+
+@media (max-width: 768px)
+{
+  .main_slider
+  {
+    height: 500px;
+  }
+
+  .main_slider_content
+  {
+    width: 80%;
+    margin-left: auto;
+    position: relative;
+    top: 100px;
+    left: 50px;
+  }
+
+  .shop_now_button
+  {
+    width: 100px;
+    margin-top: 16px;
+  }
+}
+  
+@media (max-width: 480px)
+{
+  .main_slider
+  {
+    height: 300px;
+    margin-top: 50px;
+  }
+
+  .main_slider_content
+  {
+    width: 90%;
+    margin-left: auto;
+    position: relative;
+    top: 50px;
+    left: 25px;
+  }
+
+  .shop_now_button
+  {
+    width: 80px;
+    margin-top: 8px;
+  }
+}
+
+/****************************************
+3. Slider Show
+****************************************/
+
+@media only screen and (max-width: 768px)
+{
+  .slide img
+  {
+    height: 250px;
+  }
+
+  .slide-caption
+  {
+    height: auto;
+    top: 50%;
+  }
+
+  .slide-caption a
+  {
+    font-size: 16px;
+    line-height: 35px;
+  }
+
+  .prev, .next
+  {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .dots
+  {
+    margin-top: 10px;
+  }
+
+  .dot
+  {
+    height: 8px;
+    width: 8px;
+    margin: 0 4px;
+  }
+
+  .slide-caption
+  {
+    min-width: 140px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/****************************************
+4. Product Flex
+****************************************/
+
+@media only screen and (max-width: 1200px) 
+{
+  .product-menu
+  {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product-item
+  {
+    flex: 1;
+  }
+}
+
+/****************************************
+5. Deal of the week
+****************************************/
+
+@media (max-width: 767px)
+{
+  .deal_ofthe_week_img
+  {
+    height: 300px;
+  }
+  
+  .deal_ofthe_week_img img
+  {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .deal_ofthe_week_col
+  {
+    text-align: center;
+  }
+}
+  
+@media (max-width: 575px)
+{
+  .timer li
+  {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .timer_num
+  {
+    font-size: 28px;
+  }
+  
+  .timer_unit
+  {
+    font-size: 12px;
+  }
+}
+
+/****************************************
+6. Benefit
+****************************************/
+
+@media screen and (max-width: 767px)
+{
+  .benefit_col
+  {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+  
+@media screen and (max-width: 575px)
+{
+  .benefit_icon i
+  {
+    font-size: 24px;
+  }
+  
+  .benefit_content h6
+  {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  
+  .benefit_content p
+  {
+    font-size: 10px;
+    line-height: 14px;
+  }
+}
+
+/****************************************
+7. Blogs
+****************************************/
+  
+@media (max-width: 768px)
+{
+  .blogs_container
+  {
+    margin-top: 30px;
+  }
+
+  .blog_item
+  {
+    margin-bottom: 30px;
+  }
+}
+
+/****************************************
+8. Newsletter
+****************************************/
+
+@media (max-width: 576px)
+{
+  .newsletter_text, .newsletter_form
+  {
+    height: auto;
+    text-align: center;
+  }
+  
+  .newsletter_text
+  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .newsletter_form
+  {
+    margin-top: 20px;
+  }
+  
+  #newsletter_email
+  {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .newsletter_submit_btn
+  {
+    width: 100%;
+  }
+}  

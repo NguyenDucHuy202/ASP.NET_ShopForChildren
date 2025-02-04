@@ -1,0 +1,95 @@
+﻿@model IEnumerable<QL_BanDoTreEm.Models.KHACHHANG>
+
+@{
+    ViewBag.Title = "getKHACHHANG";
+    Layout = "~/Views/Shared/_LayoutADMIN.cshtml";
+}
+
+
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+<div class="header-wrapper">
+    <div class="header-title">
+        <span>Danh mục</span>
+        <h2>QUẢN LÝ KHÁCH HÀNG</h2>
+    </div>
+    <div class="user-info">
+        <form action="/KHACHHANG/getKHACHHANG">
+            <div class="search-box">
+                <i class='bx bx-search icon'></i>
+                <input type="search" id="search" name="search" placeholder="Search..." />
+                <button type="submit" class="back">OK</button>
+            </div>
+        </form>
+        <img src="~/Images/profile.png" alt="" />
+    </div>
+</div>
+
+
+
+
+<div class="tabular-wrapper">
+    <h3 class="main-title">Danh mục khách hàng</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+            <th>
+                Họ Tên
+            </th>
+            <th>
+                Giới Tính    
+            </th>
+            <th>
+                Địa Chỉ
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+               Điện Thoại
+            </th>
+            <th>
+                Mật Khẩu
+            </th>
+            <th>
+                Action
+            </th>
+            </thead>
+            @{
+                var reversedModel = Model.Reverse().ToList();
+            }
+            @foreach (var item in reversedModel)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TENKHACHHANG)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PHAIKHACHHANG)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DIACHI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EMAIL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DIENTHOAI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TAIKHOAN.MATKHAU)
+                    </td>
+
+                    <td>
+                        <a href="@Url.Action("getKHACHHANG","HOADON", new {id = item.ID_KHACHHANG})">Lịch Sử</a>
+                        @* @Html.ActionLink("Lich su mua hang", "getALLHOADON","HOADON", new { id=item.ID_KHACHHANG }) |*@
+
+                    </td>
+                </tr>
+
+            }
+
+
+        </table>
+    </div>
+
+   

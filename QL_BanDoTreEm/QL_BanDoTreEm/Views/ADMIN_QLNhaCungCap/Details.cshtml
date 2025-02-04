@@ -1,0 +1,56 @@
+﻿@model QL_BanDoTreEm.Models.NHACUNGCAP
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutADMIN.cshtml";
+}
+
+
+<link href="~/Content/css/LayoutAdmin.css" rel="stylesheet" />
+<div class="header-wrapper">
+    <div class="header-title">
+        <span>Chi tiết</span>
+        <h2>Nhà Cùng Cấp</h2>
+    </div>
+    <div class="user-info">
+        <img src="~/Content/images/logo.png" alt="" />
+    </div>
+</div>
+
+<div class="tabular-wrapper">
+    <a href="/ADMIN_QLNhaCungCap/Index">
+        <div class="back">
+            <i class="icon-circle"></i>
+        </div>
+    </a>
+
+    <div class="detail">
+        <table class="table">
+            <tr>
+                <th class="header-title">ID</th>
+                <td>@Html.DisplayFor(model => model.ID_NHACUNGCAP)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Tên nhà cung cấp</th>
+                <td>@Html.DisplayFor(model => model.TENNHACUNGCAP)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Nơi cung cấp</th>
+                <td>@Html.DisplayFor(model => model.NOICUNGCAP)</td>
+            </tr>
+            <tr>
+                <th class="header-title">Điện thoại</th>
+                <td>@Html.DisplayFor(model => model.DIENTHOAI)</td>
+            </tr>
+
+          
+        </table>
+    </div>
+
+    <a style="text-decoration: none" href="/ADMIN_QLNhaCungCap/Edit/@Model.ID_NHACUNGCAP">
+        <div class="button">
+            EDIT
+        </div>
+    </a>
+</div>
+

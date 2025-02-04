@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b42a78a791c9420d8f7891eba9ca4863" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="DB_BANHANGModel.CHITIET_GIOHANG" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.CHITIET_HOADON" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.CHITIET_PHIEUDAT" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.DANHMUCSANPHAM" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.GIAMGIA" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.GIOHANG" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.HOADON" Width="1.5" PointX="11.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.LOAISANPHAM" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.NHACUNGCAP" Width="1.5" PointX="10.125" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.NHANVIEN" Width="1.5" PointX="7.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.PHIEUDAT" Width="1.5" PointX="6.5" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.SANPHAM" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.TAIKHOAN" Width="1.5" PointX="1.5" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.THUONGHIEU" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_CHITIET_GIOHANG_GIOHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_CHITIET_GIOHANG_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_CHITIET_HOADON_HOADON" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_CHITIET_HOADON_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_CHITIET_PHIEUDAT_PHIEUDAT" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_CHITIET_PHIEUDAT_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_SANPHAM_DANHMUCSANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_HOADON_GG" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_GIOHANG_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_HOADON_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_KHACHHANG_TAIKHOAN" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_SANPHAM_LOAI" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_PHIEUDAT_NCC" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_NHANVIEN_TAIKHOAN" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_PHIEUDAT_NHANVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_SANPHAM_TH" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB_BANHANGModel.Table" Width="1.5" PointX="7.375" PointY="5.75" />
+        <AssociationConnector Association="DB_BANHANGModel.FK_HOADON_NV" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
